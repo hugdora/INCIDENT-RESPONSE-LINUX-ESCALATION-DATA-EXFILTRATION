@@ -1,0 +1,11 @@
+let StartTime = ago(7d);
+let EndTime = now();
+let DeviceNameFilter = "";
+let ScriptName = "01_attack_simulation.sh";
+DeviceProcessEvents
+| where Timestamp between (StartTime .. EndTime)
+| where isempty(DeviceNameFilter) or DeviceName =~ DeviceNameFilter
+| where FileName in~ ("rm")
+| where ProcessCommandLine has ScriptName
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine, InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp asc
