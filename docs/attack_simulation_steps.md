@@ -58,10 +58,15 @@ During execution, the script performs the following:
 Privilege escalation
 
 Confirm the user was added to the sudo group:
-`groups <attacker_user>`
+`groups badactor`
 
 ### Script removal
 Confirm the attack script is no longer present: `ls scripts/`
+
+### Note: Script self-deletion only occurs if the environment variable
+
+`SELF_DELETE=true` is set before execution.
+
 
 ---
 
@@ -76,6 +81,9 @@ If MDE is onboarded, the following activity should be observable:
 - File access to `.secret_data/employee_records.txt`
 
 - Script execution followed by file deletion
+  
+- File copy activity from home directory to `/tmp/.stage`
+
 ---
 
 These signals are intentionally generated to support detection and investigation during the incident response phase.
