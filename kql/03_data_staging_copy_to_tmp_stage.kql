@@ -1,0 +1,12 @@
+let StartTime = ago(7d);
+let EndTime = now();
+let DeviceNameFilter = "";
+let StageDir = "/tmp/.stage";
+let SecretPathFragment = ".secret_data/employee_records.txt";
+DeviceProcessEvents
+| where Timestamp between (StartTime .. EndTime)
+| where isempty(DeviceNameFilter) or DeviceName =~ DeviceNameFilter
+| where FileName in~ ("cp")
+| where ProcessCommandLine has StageDir and ProcessCommandLine has SecretPathFragment
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine, InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp asc
