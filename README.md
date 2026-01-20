@@ -35,11 +35,10 @@ The incident is detected and investigated using Microsoft Defender for Endpoint 
 
 ## Repository Structure
 
-scripts/ → Attack simulation and cleanup scripts
-docs/ → Architecture and investigation walkthrough
-kql/ → Defender Advanced Hunting queries
-report/ → Formal incident report (NIST 800-61)
-
+- `scripts/` → Attack simulation and cleanup scripts
+- `docs/` → Architecture and investigation walkthrough
+- `kql/` → Defender Advanced Hunting queries
+- `report/` → Formal incident report (NIST 800-61)
 
 ---
 
