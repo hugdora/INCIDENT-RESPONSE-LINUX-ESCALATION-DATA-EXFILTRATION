@@ -76,9 +76,10 @@ If MDE is onboarded, the following activity should be observable:
 - File access to `.secret_data/employee_records.txt`
 
 - Script execution followed by file deletion
+---
 
 These signals are intentionally generated to support detection and investigation during the incident response phase.
----
+
 ## Notes
 
 This attack simulation is intentionally simplified and designed for defensive learning.
