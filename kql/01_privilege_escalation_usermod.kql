@@ -1,0 +1,10 @@
+let StartTime = ago(7d);
+let EndTime = now();
+let DeviceNameFilter = ""; // optional: set to exact device name, or leave blank
+DeviceProcessEvents
+| where Timestamp between (StartTime .. EndTime)
+| where isempty(DeviceNameFilter) or DeviceName =~ DeviceNameFilter
+| where FileName in~ ("usermod")
+| where ProcessCommandLine has_all ("usermod", "-aG", "sudo")
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine, InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp asc
