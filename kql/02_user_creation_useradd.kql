@@ -1,0 +1,11 @@
+let StartTime = ago(7d);
+let EndTime = now();
+let DeviceNameFilter = "";
+let AttackerUser = "badactor";
+DeviceProcessEvents
+| where Timestamp between (StartTime .. EndTime)
+| where isempty(DeviceNameFilter) or DeviceName =~ DeviceNameFilter
+| where FileName in~ ("useradd")
+| where ProcessCommandLine has AttackerUser
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine, InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp asc
