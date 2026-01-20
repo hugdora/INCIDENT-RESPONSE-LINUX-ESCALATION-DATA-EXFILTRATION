@@ -1,0 +1,10 @@
+let StartTime = ago(7d);
+let EndTime = now();
+let DeviceNameFilter = "";
+DeviceProcessEvents
+| where Timestamp between (StartTime .. EndTime)
+| where isempty(DeviceNameFilter) or DeviceName =~ DeviceNameFilter
+| where FileName in~ ("az")
+| where ProcessCommandLine has_all ("az", "storage", "blob", "upload")
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine, InitiatingProcessFileName, InitiatingProcessCommandLine
+| order by Timestamp asc
