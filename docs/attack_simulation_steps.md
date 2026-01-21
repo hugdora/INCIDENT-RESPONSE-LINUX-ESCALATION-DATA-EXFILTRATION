@@ -6,7 +6,7 @@ The actions performed represent common post-compromise techniques observed in re
 ---
 
 ## Script Used
-- `scripts/01_attack_simulation.sh`
+- `01_attack_simulation.sh`
 
 ---
 
@@ -32,12 +32,12 @@ The simulated attacker performs the following actions:
 
 ### 1) Make the attack script executable
 ```bash
-chmod +x scripts/01_attack_simulation.sh
+chmod +x 01_attack_simulation.sh
 ```
 ### 2) Execute the attack simulation
 
 ```bash
-./scripts/01_attack_simulation.sh
+./01_attack_simulation.sh
 
 ```
 ---
