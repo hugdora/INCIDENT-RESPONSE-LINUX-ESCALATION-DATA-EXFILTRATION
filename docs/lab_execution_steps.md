@@ -3,7 +3,7 @@
 This document shows how the lab setup script was executed on the Ubuntu VM to create test artifacts for the incident simulation.
 
 ## Script Used
-- `scripts/00_setup_lab.sh`
+- `00_setup_lab.sh`
 
 ## Purpose
 Creates a hidden directory and a dummy “sensitive” file that will later be used to simulate data exfiltration.  
@@ -24,12 +24,12 @@ cd INCIDENT-RESPONSE-LINUX-ESCALATION-DATA-EXFILTRATION
 
 ### 2) Make the script executable
 ```
-chmod +x scripts/00_setup_lab.sh
+chmod +x 00_setup_lab.sh
 ```
 ### 3) Run the script
 
 ```
-./scripts/00_setup_lab.sh
+./ 00_setup_lab.sh
 ```
 ## Validation (confirm artifacts exist)
 
