@@ -11,6 +11,8 @@ This project simulates a real-world Linux security incident involving:
 
 The goal of this lab is to demonstrate practical incident response skills, not exploitation.
 
+📄 Includes a full incident response report aligned to **NIST 800-61**, with **MITRE ATT&CK mapping** and a reconstructed attacker timeline ([view report](report/Incident_Report_NIST800-61.md)).
+
 ---
 
 ## Scenario Summary
