@@ -90,5 +90,6 @@ These signals are intentionally generated to support detection and investigation
 
 ## Notes
 
-This attack simulation is intentionally simplified and designed for defensive learning.
-No real data is exfiltrated, and all activity occurs in an isolated lab environment.
+- This attack simulation is intentionally simplified and designed for defensive learning.
+- Azure credentials are provided via environment variables at runtime and are never stored in the repository.
+- No real data is exfiltrated, and all activity occurs in an isolated lab environment.
