@@ -48,10 +48,12 @@ chmod +x 01_attack_simulation.sh
 
 Cloud exfiltration only occurs if all required Azure environment variables are set at runtime:
 ```
-export AZURE_STORAGE_ACCOUNT=<account_name>
-export AZURE_STORAGE_CONTAINER=<container_name>
-export AZURE_STORAGE_KEY=<storage_key>
+export AZURE_STORAGE_ACCOUNT="YOUR_ACCOUNT"
+export AZURE_STORAGE_CONTAINER="YOUR_CONTAINER"
+export AZURE_STORAGE_KEY="YOUR_KEY"
+export AZURE_BLOB_NAME="employee_records.txt"
 ```
+
 
 ### 3) Enable Script Self-Deletion (Attacker Cleanup)
 
@@ -60,6 +62,8 @@ To simulate attacker cleanup behavior:
 ```
 export SELF_DELETE=true
 ```
+> `You can enable Azure upload and self-delete in the same single run by setting environment variables before executing the script.`
+
 ### 4) Execute the attack simulation
 
 ```
