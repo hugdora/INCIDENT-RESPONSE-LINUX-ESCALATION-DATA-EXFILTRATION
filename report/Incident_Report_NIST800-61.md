@@ -3,6 +3,9 @@
 ## Executive Summary
 
 - **Overview:** A simulated security incident was identified on an Ubuntu Linux virtual machine as part of an incident response lab exercise designed to validate detection and investigation capabilities.
+- **Incident Date:** 21 January 2026  
+**Detection Window:** 19:20 – 19:21 UTC  
+**Environment:** Isolated Ubuntu Linux Lab (Azure VM)
 
 - **Impact:** The activity involved unauthorised privilege escalation, access to sensitive data, data staging, a simulated cloud exfiltration attempt, and partial attacker cleanup activity.
 
@@ -39,21 +42,35 @@
 
 No lateral movement, persistence mechanisms, or additional compromised accounts were observed.
 
+## Timeline of Events (UTC)
 
-## Timeline (UTC)
+| Time (UTC) | Event |
+|----------|------|
+| 2026-01-21 19:20:09 | Privilege escalation detected (`usermod -aG sudo badactor`) |
+| 2026-01-21 19:20:10 | Sensitive file accessed (`employee_records.txt`) |
+| 2026-01-21 19:20:11 | Data staged to `/tmp/.stage` |
+| 2026-01-21 19:20:12 | Data exfiltrated to Azure Blob Storage |
+| 2026-01-21 19:20:13 | Attack script self-deleted |
 
-| Time (UTC) | Activity                                          |
-| ---------- | ------------------------------------------------- |
-| T0         | Lab setup script created sensitive data artifacts |
-| T1         | Privilege escalation using `usermod`              |
-| T2         | Sensitive file accessed                           |
-| T3         | Data staged to `/tmp/.stage`                      |
-| T4         | Simulated cloud exfiltration via Azure CLI        |
-| T5         | Attack script deleted                             |
 
 All timestamps were reconstructed using Microsoft Defender for Endpoint telemetry and correlated via the master timeline query.
 
 > Detailed reconstruction was performed using `06_master_timeline_reconstruction.kql.`
+
+## Evidence Collected
+
+- Microsoft Defender for Endpoint Advanced Hunting queries confirmed:
+  - Local user creation (`useradd badactor`)
+  - Privilege escalation (`usermod -aG sudo`)
+  - Data staging (`cp` to `/tmp/.stage`)
+  - Azure CLI exfiltration activity
+  - Script self-deletion (`rm 01_attack_simulation.sh`)
+
+- Microsoft Sentinel analytics rule correlated these activities into a single incident based on:
+  - Device name
+  - User account
+  - Process command-line patterns
+
 
 ## NIST 800-61 Phases
 
