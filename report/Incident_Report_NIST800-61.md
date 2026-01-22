@@ -99,7 +99,7 @@ The incident was detected through manual hunting and later operationalized into 
 
 > Each query focused on a distinct stage of the attack lifecycle and contributed to a complete timeline reconstruction.
 
-## 8. MITTRE ATT&CK Mapping
+## 8. MITRE ATT&CK Mapping
 
 | Technique ID | Technique                         |
 | ------------ | --------------------------------- |
