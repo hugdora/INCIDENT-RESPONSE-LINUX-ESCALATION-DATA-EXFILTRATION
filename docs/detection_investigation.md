@@ -81,7 +81,7 @@ It produces a unified, chronological view of attacker activity and maps each act
 The reconstructed timeline confirms:
 
 - Initial privilege escalation
-- Unauthorized account manipulation
+- Unauthorised account manipulation
 - Access to sensitive data
 - Data staging and exfiltration behavior
 - Attempted attacker cleanup
