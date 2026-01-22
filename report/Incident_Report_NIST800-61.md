@@ -51,7 +51,7 @@ The activity simulated an attacker who temporarily gained root-level access, esc
 | 2026-01-21 19:20:10 | Sensitive file accessed | Access to `employee_records.txt` |
 | 2026-01-21 19:20:11 | Data staged | File copied to `/tmp/.stage` |
 | 2026-01-21 19:20:12 | Data exfiltration | Storage blob upload |
-| 2026-01-21 19:20:13 | Evidence self-delete to cleanup |rm 01_attack_simulation.sh |
+| 2026-01-21 19:20:13 | Evidence removal (script self-deletion)|rm 01_attack_simulation.sh |
 
 > All timestamps were reconstructed using Microsoft Defender for Endpoint telemetry and correlated via the master timeline hunting query.
 
@@ -63,7 +63,7 @@ The following command-line activities were captured and validated via Advanced H
 
   - Local user creation (`useradd badactor`)
   - Privilege escalation (`usermod -aG sudo badactor`)
-  - Data staging (`cp to employee_records.txt /tmp/.stage`)
+  - Data staging (`cp .secret_data/employee_records.txt /tmp/.stage/`)
   - Cloud exfiltration: `az storage blob upload`
   - Script self-deletion (`rm 01_attack_simulation.sh`)
 
@@ -83,7 +83,7 @@ A scheduled analytics rule correlated the above behaviors into a single incident
 - Cloud storage destination prepared for simulation
 
 ### Phase 2: Detection and Analysis
-The incident was detected through manual hunting and later operationalized into a Microsoft Sentinel analytics rule. The following KQL queries were used during investigation::
+The incident was detected through manual hunting and later operationalized into a Microsoft Sentinel analytics rule. The following KQL queries were used during investigation:
 
 -  `01_privilege_escalation_usermod.kql` (Privilege escalation detection)
 
@@ -115,6 +115,7 @@ The incident was detected through manual hunting and later operationalized into 
 - Disabled or restricted the badactor account
 - Deleted staged data from /tmp/.stage
 - Isolated the VM from external network access
+- Sentinel incident created and triaged
 
 
 ## 10. Eradication
